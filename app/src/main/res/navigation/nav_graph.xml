@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/news">
+
+    <fragment
+        android:id="@+id/news"
+        android:name="com.ee.appcentnews.views.NewsFragment"
+        android:label="fragment_news"
+        tools:layout="@layout/fragment_news" >
+        <action
+            android:id="@+id/action_news_to_contentFragment"
+            app:destination="@id/contentFragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/favorites"
+        android:name="com.ee.appcentnews.views.FavoritesFragment"
+        android:label="fragment_favorites"
+        tools:layout="@layout/fragment_favorites" >
+        <action
+            android:id="@+id/action_favorites_to_contentFragment"
+            app:destination="@id/contentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contentFragment"
+        android:name="com.ee.appcentnews.views.ContentFragment"
+        android:label="fragment_content"
+        tools:layout="@layout/fragment_content" >
+        <action
+            android:id="@+id/action_contentFragment_to_newSourceFragment"
+            app:destination="@id/newSourceFragment" />
+        <argument
+            android:name="newsArg"
+            app:argType="com.ee.appcentnews.model.News" />
+    </fragment>
+    <fragment
+        android:id="@+id/newSourceFragment"
+        android:name="com.ee.appcentnews.views.NewSourceFragment"
+        android:label="fragment_new_source"
+        tools:layout="@layout/fragment_new_source" >
+        <action
+            android:id="@+id/action_newSourceFragment_to_contentFragment"
+            app:destination="@id/contentFragment" />
+        <argument
+            android:name="urlArg"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+</navigation>
